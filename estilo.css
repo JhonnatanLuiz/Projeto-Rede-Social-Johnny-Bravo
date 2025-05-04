@@ -1,0 +1,1062 @@
+/* --- Básico: Resets e Estilos Gerais --- */
+
+/* Adicionando Fontes do Google Fonts - Se quiser outras fontes, mude aqui */
+/* Mantido as fontes Raleway e Montserrat do exemplo anterior, que não estavam no seu código atual */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Raleway:wght@400;500;700&display=swap');
+
+
+/* Reset básico universal */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- GARANTE MARGENS E PADDING ZERO PARA HTML E BODY, LARGURA TOTAL --- */
+/* Essencial para garantir que o .cover-photo com 100% de largura funcione */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%; /* Garante que ocupem 100% da largura da viewport */
+    overflow-x: hidden; /* Ajuda a esconder qualquer conteúdo que possa vazar horizontalmente */
+}
+
+body {
+    font-family: 'Arial', sans-serif; /* Usando Arial como no seu código atual, ou mude para 'Raleway' */
+    line-height: 1.6;
+    background-color: #f0f2f5;
+    color: #1c1e21;
+    /* Removido padding-top pois a capa e header estão no fluxo normal ANTES do main */
+    padding-top: 0;
+    /* Adicione uma altura mínima se precisar testar o rodapé em páginas curtas */
+    /* min-height: 100vh; */
+}
+
+/* Estilo para links (mantido do seu código) */
+a {
+   text-decoration: none;
+   color: #0571ed;
+    transition: color 0.3s ease; /* Adicionado transição suave */
+}
+
+a:hover {
+    text-decoration: underline;
+     color: #0056b3; /* Cor um pouco mais escura no hover */
+}
+
+/* Botões genéricos (ex: botão Editar Perfil) - mantido do seu código com pequena melhoria */
+button {
+    background-color: #e4e6eb;
+    color: #1c1e21;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #d8dade;
+}
+
+/* --- Layout Geral: Container (mantido) --- */
+
+.container {
+    max-width: 1080px; /* Largura máxima do conteúdo */
+    margin: 0 auto; /* Centraliza o container na página */
+    padding: 0 20px; /* Adiciona padding lateral */
+}
+
+/* --- Estilos para a Imagem de Capa no Topo (CORRIGIDO e REFORÇADO) --- */
+.cover-photo { /* Selector Correto */
+    width: 1040px;
+    height: 380px; /* Mantém a altura desejada */
+    background-color: #ddd;
+    overflow: hidden;
+    margin: 0 auto; /* Garante margem zero */
+    padding: 5px; /* Garante padding zero */
+    border: none; /* Garante sem borda */
+    outline: none; /* Garante sem outline */
+    display: block; /* Garante que o div se comporte como um bloco ocupando a largura */
+    position: relative; /* Útil para posicionar elementos filhos absolutamente */
+    /* Talvez z-index 0 ou auto para não sobrepor o header sem querer, embora 1 no header garanta isso */
+     z-index: auto;
+     border-radius: 10px;
+}
+
+.cover-photo img { /* Selector Correto */
+    display: block; /* A imagem se comporta como bloco */
+    position: static; /* Garante que não está posicionada absolutamente ou fixo */
+    width: 100%; /* Faz a imagem preencher 100% da largura do container */
+    height: 100%; /* Faz a imagem preencher 100% da altura do container */
+    object-fit: cover; /* Corta a imagem para preencher mantendo proporção */
+    object-position: center top; /* Foca no topo da imagem */
+    padding: 0; /* Garante padding zero */
+    margin: 0; /* Garante margem zero */
+    border: none;
+    outline: none;
+}
+
+/* --- Header (Cabeçalho do Site - CORRIGIDO SELECTOR) --- */
+
+.site-header { /* Selector CORRIGIDO de .site.header */
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adicionado de volta a sombra sutil */
+    padding: 15px 0;
+    /* Estes estilos eram para fixed header, remova pois agora ele está no fluxo normal */
+    position: static; /* Garante position: static (valor padrão) */
+    top: auto; /* Reseta top/left */
+    left: auto;
+    /* width: 100%; Este pode ficar se o conteúdo dele for centralizado pelo .container */
+    width: 1040px;
+    margin: 0 auto;
+    margin-top: 15px;
+    z-index: 1%; /* Garante que o header fica "por cima" caso algo sobreponha */
+    border: none; /* Garante sem bordas */
+    outline: none; /* Garante sem outlines */
+    border-radius: 10px;
+}
+
+.site-header .container {
+    display: flex; /* Usa Flexbox para alinhar logo, nav e busca */
+    justify-content: space-between; /* Espaça os itens */
+    align-items: center; /* Centraliza verticalmente */
+     flex-wrap: wrap; /* Permite quebra de linha em telas pequenas */
+    border: none; /* Garante sem bordas no container */
+     outline: none; /* Garante sem outlines no container */
+}
+
+.site-header .logo {
+     border: none;
+     outline: none;
+}
+
+/* --- Estilizando o Título do Site (Logo) - Usando H1.site-name AGORA --- */
+/* No HTML agora você usa <h1 class="site-name">, então estilize ele em vez do link <a> direto no logo */
+.site-name { /* Estiliza o H1 diretamente */
+    /* Mantido os estilos do exemplo anterior para o título */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+
+    /* Efeito Gradiente no Texto */
+    background-image: linear-gradient(to right, #0571ed, #00a0d2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent; /* Cor fallback transparente */
+
+    /* Efeito Sombra no Texto (opcional) */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+
+    /* Remova padding/margin específicos que podem estar puxando */
+     padding: 0;
+     margin: 0;
+
+     display: inline-block; /* Necessário para background-clip em alguns browsers */
+     transition: transform 0.3s ease; /* Animação leve */
+}
+
+/* Animação / Efeito no Título (Ex: Pulsar ou Crescer levemente no hover) */
+.site-header .logo a:hover .site-name, /* Se a animação for no H1, e ele estiver dentro de um link (embora não esteja no seu HTML atual) */
+.site-name:hover { /* Estilo de hover direto no H1 */
+    text-decoration: none; /* Remover sublinhado se for link */
+    transform: scale(1.05);
+    cursor: pointer; /* Indica que é interativo, embora não seja um link direto agora */
+}
+
+
+.site-header .main-nav {
+    border: none;
+    outline: none;
+}
+
+/* Selector CORRIGIDO de .site.header .main-nav ul */
+.site-header .main-nav ul { /* Selector CORRIGIDO */
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+     margin-right: 15px; /* Adicionado uma pequena margem para separar da busca em linha reta */
+     border: none;
+     outline: none;
+}
+
+.site-header .main-nav ul li {
+    margin-right: 15px;
+    list-style: none;
+     border: none;
+     outline: none;
+}
+.site-header .main-nav ul li:last-child {
+    margin-right: 0; /* Remove margem do último item */
+}
+
+
+.site-header .main-nav a {
+    color: #1c1e21;
+    padding: 5px 10px;
+    transition: color 0.3s ease;
+     font-weight: 500; /* Se usar Raleway SemiBold */
+}
+
+.site-header .main-nav a:hover {
+    color: #0571ed;
+    text-decoration: none;
+}
+
+.site-header .search-bar {
+     border: none;
+     outline: none;
+     /* Garante que a barra de busca não seja espremida, ou use flex-shrink: 0 */
+     flex-basis: 200px; /* Dá uma base de tamanho */
+     flex-grow: 1; /* Permite crescer um pouco se tiver espaço */
+     flex-shrink: 0; /* Impede de diminuir demais */
+
+     display: flex; /* Adiciona flexbox para alinhar o input e o botão */
+     align-items: center;
+}
+
+.site-header .search-bar input[type="text"] {
+    padding: 8px 15px; /* Aumenta padding para casar com botão */
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 14px;
+    width: 100%; /* Ocupa o máximo do seu flex-basis/grow */
+    margin-right: 5px; /* Espaço entre input e botão */
+    border-bottom: 1px solid #ccc; /* Restaura a borda */
+    outline: none; /* Remove o highlight ao focar (opcional) */
+    box-shadow: none; /* Remove sombra */
+}
+/* Style para o botão de busca */
+.site-header .search-bar button[type="submit"] {
+     padding: 8px 15px;
+     border: 1px solid #ccc; /* Adiciona uma borda */
+     background-color: #f2f2f2; /* Cor de fundo */
+     color: #1c1e21;
+     border-radius: 20px;
+     cursor: pointer;
+     transition: background-color 0.3s ease;
+}
+.site-header .search-bar button[type="submit"]:hover {
+    background-color: #e9e9e9;
+}
+
+
+/* --- Layout da Página de Perfil (CORRIGIDO SELECTOR) --- */
+
+.profile-page { /* Selector CORRIGIDO de .profile.page */
+    margin-top: 20px;
+    /* Padding ou margin adicional no topo do .main para caso o header NÃO SEJA fixo E tenha uma altura considerável */
+    /* Como o header está no fluxo normal abaixo da capa, este margin-top de 20px está OK */
+}
+
+.profile-header-section{
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: none; /* Garante sem borda */
+     outline: none; /* Garante sem outline */
+}
+
+/* Reajustando a margem negativa para sobrepor a base da capa ACIMA DE TUDO */
+.profile-essentials {
+    display: flex;
+    padding: 0 20px 20px 20px;
+    /* AJUSTE AQUI: Margin top NEGATIVA para subir a foto do perfil abaixo da capa.
+       Ajuste o -60px para que a base da foto fique na posição visual que você deseja sobre a capa.
+       Se a capa tem 250px de altura, a base dela está em y=250px. O topo deste div (.profile-essentials)
+       deveria começar lá ou um pouco antes. Ex: -60px significa que o topo deste div
+       começa 60px ANTES do ponto onde ele começaria normalmente. */
+    margin-top: 10px; /* Valor ajustável para sobrepor a base da capa */
+    position: relative;
+    z-index: 1; /* Garante que foto e info fiquem acima da capa se sobrepondo */
+    align-items: flex-end; /* Alinha os itens (foto e info-header) na parte de baixo */
+}
+
+.profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Forma circular */
+    border: 5px solid #fff;
+    background-color: #eee;
+    overflow: hidden;
+    margin-right: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+     flex-shrink: 0; /* Garante que a foto não diminua em layout flexível */
+    border: none;
+    outline: none;
+}
+
+/* Selector CORRIGIDO de .profile.photo img */
+.profile-photo img { /* Selector CORRIGIDO */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border: none;
+     outline: none;
+}
+
+.profile-info-header {
+    flex-grow: 1;
+    padding-bottom: 20px;
+    border: none;
+     outline: none;
+}
+
+.profile-info-header h1 {
+    font-size: 28px;
+    margin-bottom: 5px;
+    color: #1c1e21;
+     font-family: 'Raleway', sans-serif; /* Ou Arial */
+}
+
+.profile-info-header .username {
+    color: #65676b;
+    font-size: 16px;
+    margin-bottom: 10px;
+     font-family: 'Raleway', sans-serif; /* Ou Arial */
+}
+
+/* profile-info-header button já estilizado com as regras gerais de button acima */
+
+
+.profile-nav {
+    border-top: 1px solid #dddfe2; /* Corrigido de #dddef2 para consistência */
+    padding: 0 20px;
+     border: none; /* Garante sem bordas aqui, a linha é apenas a borda top */
+    outline: none;
+}
+
+.profile-nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    overflow-x: auto; /* Permite rolar em telas pequenas */
+    padding-bottom: 5px;
+    -ms-overflow-style: none;  /* Esconde a scrollbar no IE e Edge */
+    scrollbar-width: none;  /* Esconde a scrollbar no Firefox */
+    border: none;
+     outline: none;
+}
+/* Para esconder a scrollbar em Webkit browsers (Chrome, Safari) */
+.profile-nav ul::-webkit-scrollbar {
+    display: none;
+}
+
+.profile-nav li {
+    margin-right: 30px;
+     border: none;
+     outline: none;
+}
+
+.profile-nav li:last-child {
+    margin-right: 0; /* Remover margem do último item da nav do perfil */
+}
+
+
+.profile-nav a {
+    color: #65676b;
+    padding: 15px 0;
+    display: inline-block;
+    font-weight: bold; /* No seu CSS estava bold, mantido */
+    border-bottom: 3px solid transparent;
+    transition: color 0.3s ease, border-bottom-color 0.3s ease;
+     font-family: 'Raleway', sans-serif; /* Ou Arial */
+     font-weight: 500;
+}
+
+.profile-nav a:hover {
+    color: #0571ed;
+}
+
+.profile-nav a.active{
+    color: #0571ed;
+    border-bottom-color: #0571ed;
+}
+
+.profile-nav .count {
+    font-size: 14px;
+    color: #65676b;
+    margin-left: 3px;
+     font-weight: normal; /* Para não herdar o bold do link */
+}
+
+
+/* --- Conteúdo Principal (Sidebar e Feed - Mantido, pequenas correções e ajustes) --- */
+
+.content-container {
+    display: grid;
+    grid-template-columns: 300px 1fr; /* Sidebar 300px, Feed restante */
+    gap: 20px;
+    border: none; outline: none;
+}
+
+.profile-sidebar {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border: none; outline: none;
+}
+
+.profile-sidebar h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #1c1e21;
+    font-family: 'Raleway', sans-serif; /* Ou Arial */
+}
+
+.profile-sidebar p {
+    font-size: 15px;
+    margin-bottom: 15px;
+    color: #1c1e21;
+    font-family: 'Raleway', sans-serif; /* Ou Arial */
+    font-weight: 400;
+}
+
+.profile-sidebar .details p {
+    margin-bottom: 10px;
+    color: #65676b;
+    font-size: 14px;
+    font-family: 'Raleway', sans-serif; /* Ou Arial */
+}
+
+.profile-sidebar .details i {
+    margin-right: 5px;
+    color: #65676b;
+}
+
+.friends-list {
+    margin-top: 20px;
+    border-top: 1px solid #dddfe2; /* Corrigido */
+    padding-top: 20px;
+    border: none; outline: none;
+}
+
+.friends-list h2 {
+    font-family: 'Raleway', sans-serif; /* Ou Arial */
+}
+
+.friend-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 10px;
+}
+
+.friend-thumb {
+    display: block;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #eee;
+    border: none; outline: none;
+}
+
+.friend-thumb img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+     border: none; outline: none;
+}
+
+.friend-thumb img:hover {
+    transform: scale(1.05);
+}
+
+/* O Feed pode ser o container direto ou ter um padding dentro como você tinha */
+.profile-feed {
+    /* Reativado padding e background, se quiser remover os arredondamentos e sombras em mobile (como na sua media query antiga), as regras já estão lá */
+    background-color: #fff; /* Fundo branco */
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 20px; /* Padding interno */
+     border: none; outline: none;
+}
+
+.profile-feed h2 {
+     font-size: 20px;
+     margin-bottom: 15px;
+     color: #1c1e21;
+     font-family: 'Raleway', sans-serif; /* Ou Arial */
+}
+
+
+.post {
+    background-color: #fff; /* Já definido no .profile-feed, mas bom reforçar */
+    border-radius: 8px; /* Já definido no .profile-feed, mas bom reforçar */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Já definido no .profile-feed, mas bom reforçar */
+    padding: 15px; /* Padding dentro de cada post individual */
+    margin-bottom: 20px; /* Espaço entre os posts */
+    border: none; outline: none;
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+     border: none; outline: none;
+}
+
+.post-author {
+    display: flex;
+    align-items: center;
+     border: none; outline: none;
+}
+
+.author-avatar, .comment-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Corrigido de 50px para 50% para garantir círculo */
+    background-color: #eee;
+    margin-right: 10px;
+    overflow: hidden;
+    flex-shrink: 0;
+     border: none; outline: none;
+}
+
+.author-avatar img, .comment-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border: none; outline: none;
+}
+
+.author-name {
+    font-weight: bold;
+    color: #1c1e21;
+    display: block;
+    font-size: 15px;
+    font-family: 'Raleway', sans-serif; /* Ou Arial */
+    font-weight: 500;
+}
+
+.post-time {
+    font-size: 13px;
+    color: #65676b;
+    display: block;
+    font-family: 'Raleway', sans-serif; /* Ou Arial */
+    font-weight: 400;
+}
+
+.post-options {
+    color: #65676b;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.post-content {
+    margin-bottom: 15px;
+    border: none; outline: none;
+}
+
+.post-content p {
+    font-size: 15px;
+    color: #1c1e21;
+    margin-bottom: 10px;
+     font-family: 'Raleway', sans-serif; /* Ou Arial */
+     font-weight: 400;
+}
+
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    margin-top: 10px;
+    border: none; outline: none;
+}
+
+.post-actions {
+    border-top: 1px solid #dddfe2; /* Corrigido */
+    padding-top: 10px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+    border: none; outline: none;
+}
+
+.post-actions a {
+    color: #65676b;
+    font-weight: bold; /* Mantido, ou mude para font-weight: 500; se usar Raleway SemiBold */
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-family: 'Raleway', sans-serif; /* Ou Arial */
+    font-weight: 500; /* Sugestão para usar 500 (SemiBold) se a Raleway for aplicada aqui */
+}
+
+.post-actions a:hover {
+    background-color: #f2f2f2;
+    text-decoration: none;
+}
+
+.post-actions .count {
+    font-weight: normal;
+    margin-left: 3px;
+    font-family: 'Arial', sans-serif; /* Font para números, ou apenas remova font-family */
+}
+
+.post-comments {
+    margin-top: 15px;
+    border-top: 1px solid #dddfe2; /* Corrigido */
+    padding-top: 15px;
+    border: none; outline: none;
+}
+
+.comment {
+    display: flex;
+    margin-bottom: 15px;
+    border: none; outline: none;
+}
+
+.comment-text {
+    background-color: #f2f2f2;
+    border-radius: 18px;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #1c1e21;
+    /* Max-width calculado para não esmagar o avatar (largura total do post - (largura avatar + margem direita avatar)) */
+    max-width: calc(100% - 50px); /* Baseado no avatar 40px + margem 10px */
+    word-wrap: break-word;
+     font-family: 'Raleway', sans-serif; /* Ou Arial */
+     font-weight: 400;
+}
+
+.comment-text .comment-author {
+    font-weight: bold; /* Mantido, ou mude para font-weight: 500; */
+    margin-right: 5px;
+    color: #1c1e21;
+    display: inline-block;
+     font-family: 'Raleway', sans-serif; /* Ou Arial */
+    font-weight: 500;
+}
+
+
+/* --- Footer (Rodapé do Site - Mantido, pequenas correções e ajustes) --- */
+
+.site-footer {
+    background-color: #f0f2f5;
+    color: #65676b;
+    padding: 20px 0;
+    margin-top: 30px;
+    font-size: 14px;
+    text-align: center;
+     border: none; outline: none;
+}
+
+.site-footer .container {
+    display: flex;
+    justify-content: space-between; /* Corrigido para space-between para melhor distribuição */
+    align-items: center;
+    flex-wrap: wrap;
+    border: none; outline: none;
+}
+
+.site-footer p {
+    margin: 5px 0;
+     font-family: 'Raleway', sans-serif; /* Ou Arial */
+     font-weight: 400;
+}
+
+.site-footer ul {
+    list-style: none;
+    display: flex;
+    margin: 5px 0;
+    border: none; outline: none;
+}
+
+.site-footer li {
+    margin-left: 20px;
+     border: none; outline: none;
+}
+
+.site-footer li:first-child { /* Opcional: remove margem do primeiro link do footer */
+     margin-left: 0;
+     /* Ou se justificar space-around/between, todos já tem margem entre si */
+}
+
+
+.site-footer a {
+    color: #65676b;
+    transition: color 0.3s ease;
+     font-family: 'Raleway', sans-serif; /* Ou Arial */
+     font-weight: 400;
+}
+
+.site-footer a:hover {
+    color: #1c1e21;
+    text-decoration: underline;
+}
+
+
+/* --- Responsividade (Media Queries - CORRIGIDO SELECTORS) --- */
+
+/* Para telas menores (ex: tablets e celulares) */
+@media (max-width:768px) {
+
+/* Ajustes no Header (CORRIGIDO SELECTOR) */
+.site-header .container { /* Selector CORRIGIDO */
+    flex-direction: column;
+    align-items: flex-start;
+    }
+
+    .site-header .logo {
+        margin-bottom: 10px;
+    }
+
+    /* Selector CORRIGIDO .site-header .main-nav ul */
+    .site-header .main-nav ul { /* Selector CORRIGIDO */
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 10px;
+        margin-right: 0; /* Remove margem lateral que foi adicionada para desktop */
+    }
+
+    .site-header .main-nav ul li {
+        margin: 0 10px 10px 10px;
+    }
+
+    .site-header .main-nav ul li:last-child {
+        margin-right: 10px; /* Garante que a margem direita do último item é 10px, não 0 */
+     }
+
+    .site-header .search-bar {
+        width: 100%;
+        text-align: center; /* Remova ou ajuste se display flex já centralizar o conteúdo */
+        /* Garante que input e botão fiquem em linha cheia no mobile */
+        flex-direction: row;
+         flex-basis: auto; /* Reseta flex-basis */
+         flex-grow: 1; /* Permite crescer no mobile tbm */
+    }
+
+    .site-header .search-bar input[type="text"] {
+        width: calc(100% - 70px); /* Calcula largura baseada na largura do botão (aprox 60px + 10px margem) */
+         margin-right: 5px; /* Mantém margem */
+    }
+    /* Botão da busca em mobile */
+     .site-header .search-bar button[type="submit"] {
+        flex-shrink: 0; /* Garante que o botão não diminua */
+     }
+
+
+    /* Ajustes no Header do Perfil (CORRIGIDO SELECTOR) */
+    .profile-essentials {
+        flex-direction: column;
+        align-items: center;
+         /* AJUSTE AQUI para a margem negativa em telas pequenas */
+         /* Altura da capa é 150px em telas < 480px. Talvez -40px ou -50px? */
+         margin-top: -60px; /* Mantido -60px por enquanto, ajuste se necessário */
+        padding-top: 10px; /* Adiciona padding no topo caso a margem negativa seja grande */
+    }
+
+    .profile-photo {
+        margin-right: 0;
+        margin-bottom: 15px;
+        width: 120px;
+        height: 120px;
+    }
+
+    .profile-info-header {
+        text-align: center;
+        padding-bottom: 0;
+    }
+
+    .profile-info-header h1 {
+        font-size: 24px;
+    }
+
+    .profile-info-header .username {
+        font-size: 15px;
+    }
+
+    .profile-nav ul {
+        justify-content: space-around;
+        overflow-x: auto; /* Mantido para rolar horizontalmente se precisar */
+        -ms-overflow-style: auto;  /* Garante que aparece scrollbar se necessário em telas pequenas */
+        scrollbar-width: auto;
+        margin-left: 0;
+        margin-right: 0;
+        flex-wrap: wrap; /* Permite quebra de linha nos links */
+    }
+
+     /* Garante que aparece scrollbar em webkit se necessário em telas pequenas */
+     .profile-nav ul::-webkit-scrollbar {
+         display: block;
+         height: 8px; /* Altura da scrollbar */
+         /* Adicione estilos de cor se quiser */
+     }
+      /* Estilo da track (fundo da scrollbar) */
+      .profile-nav ul::-webkit-scrollbar-track {
+         background: #f1f1f1;
+      }
+      /* Estilo do thumb (o "puxador" da scrollbar) */
+      .profile-nav ul::-webkit-scrollbar-thumb {
+         background: #888;
+         border-radius: 4px;
+      }
+      /* Estilo do thumb no hover */
+      .profile-nav ul::-webkit-scrollbar-thumb:hover {
+         background: #555;
+      }
+
+
+    .profile-nav li {
+        margin-right: 10px;
+        margin-bottom: 5px;
+    }
+
+    .profile-nav li:last-child { /* Ajuste para telas pequenas */
+         margin-right: 10px;
+         margin-bottom: 5px;
+     }
+
+
+    /* Ajustes no Conteúdo Principal (Sidebar e Feed) */
+    .content-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    /* Sidebar aparece no topo ou abaixo do feed */
+    .profile-sidebar {
+        order: 1; /* A sidebar aparece PRIMEIRO (acima) do feed */
+    }
+
+    .profile-feed {
+        order: 2; /* O feed aparece DEPOIS (abaixo) da sidebar */
+    }
+
+    /* Ajustes no Footer */
+    .site-footer .container {
+        flex-direction: column;
+    }
+
+    .site-footer ul {
+        margin-top: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .site-footer li {
+        margin-left: 10px;
+        margin-right: 10px;
+         margin-bottom: 5px; /* Espaço caso quebre linha */
+    }
+     .site-footer li:first-child {
+        margin-left: 10px;
+     }
+
+
+}
+
+/* Para telas menores (ex: celulares pequenos) */
+@media (max-width: 480px) {
+    /* Removido padding-top do body novamente, pois a capa está antes */
+     body {
+         padding-top: 0;
+         min-height: auto; /* Reseta altura mínima se houver */
+     }
+
+    .profile-page .container {
+        padding: 0 10px;
+    }
+
+    /* Removendo arredondamento e sombra em elementos em telas muito pequenas - como estava no seu código antigo */
+    .profile-header-section, .profile-sidebar,
+    .post, .site-footer { /* Adicionado .site-footer */
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .profile-header-section {
+        margin-bottom: 15px;
+    }
+
+    .cover-photo { /* Corrigido de .cover.photo para .cover-photo */
+        height: 150px; /* Altura menor da capa em celulares */
+        border-radius: 0;
+         box-shadow: none;
+    }
+
+    /* Reajuste a margem negativa para o profile-essentials abaixo da capa de 150px */
+    .profile-essentials {
+        margin-top: -50px; /* AJUSTE ESSE VALOR. Capa é 150px de altura. -50px sobe 50px. */
+        padding-top: 10px;
+         align-items: center; /* Já estava centralizando verticalmente */
+    }
+
+    .profile-photo {
+        width: 90px;
+        height: 90px;
+        border-width: 3px;
+         margin-right: 0; /* Garante margem zero à direita em mobile */
+         margin-bottom: 15px; /* Adiciona margem abaixo em layout de coluna */
+    }
+    /* Foto de perfil em mobile (avatar dentro do essentials empilhados) */
+    .profile-photo img {
+        width: 100%;
+        height: 100%;
+         object-fit: cover;
+         display: block;
+    }
+
+
+    .profile-info-header {
+        font-size: 14px; /* Ajusta fonte info-header em mobile */
+        text-align: center;
+        padding-bottom: 0;
+    }
+
+    .profile-info-header h1 {
+        font-size: 20px;
+    }
+
+    .profile-info-header .username {
+        font-size: 14px;
+    }
+
+    .profile-info-header button {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+
+
+    .profile-nav li {
+        margin-right: 5px;
+         margin-bottom: 5px;
+    }
+     .profile-nav li:last-child {
+         margin-right: 5px; /* Garante margem direita do último item é 5px */
+         margin-bottom: 5px;
+     }
+    .profile-nav a {
+        padding: 10px 0;
+        font-size: 14px;
+    }
+
+    .profile-sidebar {
+        padding: 15px;
+    }
+
+    .profile-sidebar h2 {
+        font-size: 18px;
+    }
+
+    .profile-sidebar p, .profile-sidebar .details p {
+        font-size: 14px;
+    }
+
+    .friend-grid {
+        gap: 5px;
+    }
+
+    .friend-thumb {
+        border-radius: 4px;
+    }
+
+    .post {
+        padding: 10px;
+        margin-bottom: 15px;
+         /* border-radius e box-shadow já removidos por regra acima */
+    }
+
+    .post-header {
+        margin-bottom: 10px;
+    }
+
+    .author-avatar, .comment-avatar {
+        width: 35px;
+        height: 35px;
+        margin-right: 8px;
+        border-radius: 50%; /* Garante círculo, herdando de cima mas bom reforçar */
+    }
+
+    .author-name {
+        font-size: 14px;
+    }
+
+    .post-time {
+        font-size: 12px;
+    }
+
+    .post-content {
+        margin-bottom: 10px;
+    }
+
+    .post-content p {
+        font-size: 14px;
+    }
+
+    .post-content img {
+        border-radius: 4px;
+    }
+
+    .post-actions {
+        padding-top: 8px;
+        margin-top: 8px;
+        /* Para quebrar os botões de ação em mobile se necessário */
+        flex-wrap: wrap;
+         justify-content: center;
+    }
+
+     /* Ajusta margens para flex-wrap nos actions em mobile */
+     .post-actions a {
+         margin: 0 5px 5px 5px;
+         font-size: 13px;
+         padding: 3px 5px;
+     }
+
+
+    .post-actions .count {
+        font-size: 12px;
+    }
+
+    .post-comments {
+        margin-top: 10px;
+        padding-top: 10px;
+    }
+
+    .comment {
+        margin-bottom: 10px;
+    }
+
+    .comment-text {
+        font-size: 13px;
+        padding: 6px 10px;
+        border-radius: 15px;
+        /* Max-width ajustado considerando avatar menor (35px + 8px margem) */
+         max-width: calc(100% - 43px);
+    }
+
+    .site-footer {
+        margin-top: 20px;
+        padding: 15px 0;
+        /* border-radius e box-shadow já removidos por regra acima */
+    }
+
+    .site-footer p, .site-footer a {
+        font-size: 13px;
+    }
+
+    .site-footer ul {
+         flex-wrap: wrap;
+         justify-content: center;
+     }
+      .site-footer li {
+         margin-left: 8px;
+         margin-right: 8px;
+         margin-bottom: 4px;
+      }
+       .site-footer li:first-child {
+          margin-left: 8px;
+       }
+}
