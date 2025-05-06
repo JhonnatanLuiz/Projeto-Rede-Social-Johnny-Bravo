@@ -1060,3 +1060,40 @@ button:hover {
           margin-left: 8px;
        }
 }
+
+.post-comments {
+    margin-top: 15px;
+    border-top: 1px solid #dddfe2; /* Corrigido */
+    padding-top: 15px;
+}
+
+/* --- Estilos para a Mensagem de Logout (adicionado com JS) --- */
+
+.logout-message {
+    position: fixed; /* Fixa a mensagem na tela, independente da rolagem */
+    top: 50%; /* Posiciona o topo a 50% da altura da tela */
+    left: 50%; /* Posiciona a esquerda a 50% da largura da tela */
+    transform: translate(-50%, -50%); /* Ajusta para centralizar o ELEMENTO no ponto 50%,50% */
+    background-color: rgba(255, 255, 255, 0.95); /* Fundo branco semi-transparente */
+    color: #1c1e21; /* Cor do texto */
+    padding: 30px; /* Espaçamento interno */
+    border-radius: 10px; /* Cantos arredondados */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
+    z-index: 10000; /* Garante que fique acima de todos os outros elementos */
+    text-align: center; /* Centraliza o texto dentro da caixa */
+    font-size: 1.2em; /* Tamanho de fonte maior */
+    font-weight: bold;
+    max-width: 80%; /* Garante que não fique muito largo em telas grandes */
+    opacity: 0; /* Começa invisível para efeito de fade */
+    transition: opacity 0.5s ease-in-out; /* Transição suave para a opacidade */
+    pointer-events: none; /* Impede que a mensagem interfira em cliques em outros elementos por baixo */
+}
+
+.logout-message.visible {
+    opacity: 1; /* Estado visível para o fade-in */
+}
+
+/* Opcional: Estilo para a própria mensagem de texto */
+.logout-message p {
+    margin: 0; /* Remove margem padrão do parágrafo */
+}
